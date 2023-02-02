@@ -1,0 +1,21 @@
+function [path_value] = path_value(map, pop)
+%PATH_VALUE 此处显示有关此函数的摘要
+% n是多少个解，m是多少行
+[n, m] = size(pop);
+
+path_value = zeros(1, n);
+%解两层迷宫问题
+%1-2计算一次最短距离，2-3计算一次....,，n-1 - n计算一次，一共n-1次，再相加
+for i = 1 : n
+    %记录一行的两两之间的
+    path_values = zreos(1, m-1);
+    path = [];
+    for j = 1: m - 1
+        [path, distance] = BFSTraversal(pop(i, j), pop(i, j + 1), map);
+        path_values(1,j) = distance;
+        path = [path path]
+        
+    
+end
+end
+
